@@ -21,16 +21,14 @@
         </div>
         <div class="content">
             <div class="nav">
-                <div class="nav-div">
+                <div class="nav-item">
                     <a class="nav-link" href="{{ route('main') }}">Strona główna</a>
                 </div>
-                <div class="nav-div">
+                <div class="nav-item-two">
                     <a class="nav-link" href="{{ route('delivery.index') }}">Zamawiam do biura/domu</a>
                 </div>
-                <div class="nav-div">
-                    <a class="nav-link" href="{{ route('pickup') }}">Odbiorę samodzielnie</a>
-                </div>
-                <div class="nav-div">
+
+                <div class="nav-item">
                     <a class="nav-link" href="{{ route('inplace') }}">Zjem na miejscu</a>
                 </div>
             </div>
