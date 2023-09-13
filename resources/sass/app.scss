@@ -1,0 +1,35 @@
+//
+header {
+    background: rgb(239, 231, 143);
+}
+.aside {
+    background: whitesmoke;
+    border-radius: 5px;
+}
+body {
+    background: burlywood;
+}
+.container {
+    display: flex;
+    flex-direction: row;
+    width: 1200px;
+    margin: 0 auto;
+}
+.aside {
+    width: 300px;
+}
+.content {
+    width: 900px;
+    padding: 15px;
+    margin: 0 auto;
+}
+.nav-button {
+    width: 200px;
+    border-radius: 3px;
+    background: rgb(65, 16, 16);
+    color: white
+
+}
+footer {
+    background: rgb(239, 231, 143);
+}
