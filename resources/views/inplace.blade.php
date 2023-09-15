@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('_layout')
 
 @section('title')
     W pączkarni

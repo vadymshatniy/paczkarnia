@@ -14,8 +14,8 @@ header {
 }
 
 .aside {
-    width: 250px;
-    height: 600px;
+    width: 270px;
+    height: 620px;
     overflow-y: scroll;
     padding: 10px;
     margin-bottom: 20px;
@@ -33,7 +33,7 @@ h1,
 h2 {
     font-family: var(--main-font-family);
     color: var(--brown-color);
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 h3 {
     font-family: var(--main-font-family);
@@ -51,7 +51,6 @@ p {
     width: 1200px;
     margin: 0 auto;
 }
-
 .type-title {
     font-family: var(--main-font-family);
     color: var(--brown-color);
@@ -85,34 +84,29 @@ p {
 .main-content {
     width: 900px;
     padding: 15px;
+    margin: 0 auto;
     text-align: center;
 }
-.nav-block {
+.nav-list {
     display: flex;
     align-items: center;
 }
-.nav-item {
+.nav-list-item {
     display: inline-block;
-    width: 330px;
+}
+.nav-list-button {
+    display: inline-block;
+    width: 250px;
     height: 40px;
     border-radius: 3px;
-    padding-top: 15px;
+    padding-top: 10px;
     margin-left: 5px;
     margin-right: 5px;
     background-color: var(--brown-color);
-}
-.nav-item-two {
-    display: inline-block;
-    width: 330px;
-    height: 45px;
-    border-radius: 3px;
-    padding-top: 8px;
-    margin-left: 5px;
-    margin-right: 5px;
-    background-color: var(--brown-color);
-}
-.nav-link {
     color: var(--white-color);
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
 }
 .rule-text {
     margin-bottom: 10px;

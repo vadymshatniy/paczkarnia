@@ -10,9 +10,9 @@ class IndexController extends Controller
     {
         return view('main');
     }
-    public function admin_login()
+    public function login()
     {
-        return view('admin_login');
+        return view('login');
     }
     public function admin_index()
     {

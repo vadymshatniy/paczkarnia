@@ -14,7 +14,7 @@
                 referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
         <div class="service-enter">
-            <a class="service-link" href="/admin_login"><img src="{{ url('/images/service_enter.jpg') }}"
+            <a class="service-link" href="/login"><img src="{{ url('/images/service_enter.jpg') }}"
                     alt="service enter sign" /></a>
 
         </div>

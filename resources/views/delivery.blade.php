@@ -1,11 +1,11 @@
-@extends('layouts.app')
+@extends('_layout')
 
 @section('title')
     Zamawiam dostawę
 @endsection
 
 @section('content')
-    <h2>Samodzielny odbiór czy Zamówienie do biura/domu</h2>
+    <h2>Samodzielny odbiór albo Zamówienie do biura/domu</h2>
     <p>Pola oznaczone gwiazdką muszą być wypełnione</p>
     <table class="delivery-table">
         <tr>
