@@ -60,6 +60,13 @@
                      </div>
                      <div class="info">
                          <a href="#" class="d-block">Admin</a>
+                         <a href="{{ route('logout') }}" class="nav-link" data-tooltip="tooltip" title="Logout"
+                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                             <i class="fas fa-sign-out-alt"></i>
+                         </a>
+                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                             @csrf
+                         </form>
                      </div>
                  </div>
 
@@ -76,34 +83,12 @@
                                  <p>Główna</p>
                              </a>
                          </li>
-                         <li class="nav-item menu-open">
-                             <a href="#" class="nav-link active">
-                                 <i class="nav-icon fas fa-tachometer-alt"></i>
-                                 <p>
-                                     Wszystkie zamówienia
-                                     <i class="right fas fa-angle-left"></i>
-                                 </p>
-                             </a>
-                             <ul class="nav nav-treeview">
-                                 <li class="nav-item">
-                                     <a href="./index.html" class="nav-link active">
-                                         <i class="far fa-circle nav-icon"></i>
-                                         <p>Muszą być wysłane</p>
-                                     </a>
-                                 </li>
-                                 <li class="nav-item">
-                                     <a href="./index.html" class="nav-link active">
-                                         <i class="far fa-circle nav-icon"></i>
-                                         <p>Będą wydane na miejscu</p>
-                                     </a>
-                                 </li>
-                                 <li class="nav-item">
-                                     <a href="./index.html" class="nav-link active">
-                                         <i class="far fa-circle nav-icon"></i>
-                                         <p>Już wykonane</p>
-                                     </a>
-                                 </li>
-                             </ul>
+                         @include('admin._include._menu.delivery')
+                         @include('admin._include._menu.category')
+                         @include('admin._include._menu.products')
+                     </ul>
+
+
                  </nav>
                  <!-- /.sidebar-menu -->
              </div>
@@ -151,8 +136,8 @@
      <script src="{{ asset('plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
      <!-- AdminLTE App -->
      <script src="{{ asset('dist/js/adminlte.js') }}"></script>
-     <!-- AdminLTE for demo purposes -->
-     <script src="{{ asset('dist/js/demo.js') }}"></script>
+     {{-- <!-- AdminLTE for demo purposes -->
+     <script src="{{ asset('dist/js/demo.js') }}"></script> --}}
      <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
      <script src="{{ asset('dist/js/pages/dashboard.js') }}"></script>
  </body>
