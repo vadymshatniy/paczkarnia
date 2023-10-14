@@ -107,7 +107,16 @@ p {
     text-decoration: none;
     cursor: pointer;
 }
-
+.admin-user-panel {
+    display: flex;
+}
+.admin-image {
+    width: 60px;
+}
+.admin-position {
+    width: 50px;
+    color: var(--white-color);
+}
 .rule-text {
     margin-bottom: 10px;
 }
@@ -192,6 +201,7 @@ p {
 }
 
 .creator {
+    margin-top: 20px;
     font-family: var(--main-font-family);
     color: var(--brown-color);
     font-style: italic;
@@ -231,4 +241,7 @@ color: var(--brown-color);
     background-color: var(--brown-color);
     color: var(--white-color);
     cursor: pointer;
+}
+.d-block {
+    width: 50px;
 }

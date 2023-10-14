@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Product;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\ProductRequest;
 
 class ProductAdminController extends Controller
 {
@@ -13,7 +14,8 @@ class ProductAdminController extends Controller
      */
     public function index()
     {
-        //
+        $products = Product::all();
+        return view('admin.products.index', compact('products'));
     }
 
     /**
@@ -21,15 +23,19 @@ class ProductAdminController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.products.edit');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
-        //
+        $product = new Product();
+        $product->fill($request->all());
+        $product->is_active = $request->has('is_active');
+        $product->save();
+        return redirect()->route('admin.products.edit', $product)->with('success', 'It\'s OK');
     }
 
     /**
@@ -45,7 +51,7 @@ class ProductAdminController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        return view('admin.products.edit', compact('product'));
     }
 
     /**

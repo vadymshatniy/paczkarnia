@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Category;
+use App\Models\Price;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class CategoryAdminController extends Controller
+class PriceAdminController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -35,7 +35,7 @@ class CategoryAdminController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Category $category)
+    public function show(Price $price)
     {
         //
     }
@@ -43,7 +43,7 @@ class CategoryAdminController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Category $category)
+    public function edit(Price $price)
     {
         //
     }
@@ -51,7 +51,7 @@ class CategoryAdminController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, Price $price)
     {
         //
     }
@@ -59,7 +59,7 @@ class CategoryAdminController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Category $category)
+    public function destroy(Price $price)
     {
         //
     }

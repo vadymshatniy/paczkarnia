@@ -14,7 +14,6 @@ Route::group(
     function () {
         Route::get('/', [IndexAdminController::class, 'main'])->name('main');
         Route::resource('/deliveries', DeliveryAdminController::class);
-        Route::resource('products', ProductAdminController::class);
-        Route::resource('categories', CategoryAdminController::class);
+        Route::resource('/products', ProductAdminController::class);
     }
 );

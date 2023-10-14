@@ -10,4 +10,6 @@ class Product extends Model
 {
     use HasFactory;
     use SoftDeletes;
+
+    public $fillable = ['title', 'price', 'old_price', 'description'];
 }

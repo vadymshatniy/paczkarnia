@@ -1,0 +1,47 @@
+html {
+    height: 100%;
+}
+
+.admin-container {
+    display: flex;
+    background-color: rgb(193, 193, 239);
+}
+.admin-sidebar {
+    background-color: rgb(10, 10, 31);
+}
+.admin-user-panel {
+    padding: 30px 20px;
+    background-color: rgb(39, 39, 108);
+}
+.admin-image {
+    padding: 20px;
+    margin-bottom: 20px;
+}
+.admin-name {
+    padding: 20px;
+}
+.admin-logout {
+    display: inline;
+    padding: 10px;
+    color: rgb(101, 118, 230);
+}
+.admin-image-name {
+    display: flex;
+}
+.admin-position {
+    margin-top: 15px;
+    color: white;
+}
+.admin-main {
+    padding: 10px;
+}
+.card-title {
+    margin-right: 50px;
+    font-size: 24px;
+    color: rgb(39, 39, 108);
+}
+.card-id {
+    font-size: 36px;
+    font-weight: 700;
+    color: rgb(101, 118, 230);
+}

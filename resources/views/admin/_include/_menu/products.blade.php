@@ -11,10 +11,10 @@
             <a href="{{ route('admin.products.index') }}"
                 class="nav-link @if (Route::is('*.products.*')) active @endif">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Muszą</p>
+                <p>Lista i dodawanie</p>
             </a>
         </li>
-        <li class="nav-item">
+        {{-- <li class="nav-item">
             <a href="./index.html" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Będą</p>
@@ -25,6 +25,6 @@
                 <i class="far fa-circle nav-icon"></i>
                 <p>Już</p>
             </a>
-        </li>
+        </li> --}}
     </ul>
 </li>

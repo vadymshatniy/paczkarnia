@@ -17,6 +17,6 @@ class IsAdmin
             return $next($request);
         }
 
-        return redirect()->route('main')->with('error', 'У вас нет доступа');
+        return redirect()->route('main')->with('error', 'Nie masz dostępu');
     }
 }

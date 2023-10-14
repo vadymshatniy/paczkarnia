@@ -7,7 +7,9 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Wszystkie zamówienia</h3>
+                            <h3 class="card-title">Wszystkie produkty</h3>
+                            <a href="{{ route('admin.products.create') }}" class="btn btn-outline-success">Dodawanie nowego
+                                produktu</a>
                         </div>
 
                         <div class="card-body">
@@ -16,30 +18,6 @@
                                     <div class="col-sm-12 col-md-6"></div>
                                     <div class="col-sm-12 col-md-6"></div>
                                 </div>
-
-                                <form action="{{ route('admin.deliveries.index') }}" method="GET">
-                                    <div class="row">
-                                        <div class="col-md mb-3">
-                                            <label for="status">Status</label>
-                                            <select class="select2bs4 select2-hidden-accessible" name="status"
-                                                id="status" style="width: 100%;" tabindex="-1" aria-hidden="true">
-                                                <option value="" selected>
-                                                    All
-                                                </option>
-                                                @foreach ($statuses as $status)
-                                                    <option value="{{ $status }}"
-                                                        @if (isset($_GET['status']) && $_GET['status'] == $status) selected @endif>
-                                                        {{ App\Models\Delivery::status_label($status) }}
-                                                    </option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                        <div class="col-auto">
-                                            <br>
-                                            <button class="btn btn-primary mt-2" type="submit">Filter</button>
-                                        </div>
-                                    </div>
-                                </form>
 
                                 <div class="row">
                                     <div class="col-sm-12">
@@ -51,59 +29,58 @@
                                                         rowspan="1" colspan="1" aria-sort="ascending"
                                                         aria-label="Rendering engine: activate to sort column descending">
                                                         ID</th>
-
                                                     <th class="sorting" tabindex="0" aria-controls="example2"
                                                         rowspan="1" colspan="1"
                                                         aria-label="Browser: activate to sort column ascending">
-                                                        Name & Phone & Address</th>
+                                                        Picture</th>
                                                     <th class="sorting" tabindex="0" aria-controls="example2"
                                                         rowspan="1" colspan="1"
                                                         aria-label="Platform(s): activate to sort column ascending">
-                                                        Date & Time</th>
+                                                        Name</th>
                                                     <th class="sorting" tabindex="0" aria-controls="example2"
                                                         rowspan="1" colspan="1"
                                                         aria-label="Engine version: activate to sort column ascending">
-                                                        Delivery</th>
-                                                    <th class="sorting" tabindex="0" aria-controls="example2"
-                                                        rowspan="1" colspan="1"
-                                                        aria-label="CSS grade: activate to sort column ascending">
-                                                        Message</th>
+                                                        Prices</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
 
-                                                @forelse ($deliveries as $delivery)
+                                                @forelse ($products as $product)
                                                     {{-- @dump($delivery) --}}
                                                     <tr class="odd">
                                                         <td class="dtr-control sorting_1" tabindex="0">
-                                                            {{ $delivery->id }}<br>
-                                                            {{ $delivery->status_title() }}<br>
-                                                            <a href="{{ route('admin.deliveries.edit', $delivery) }}">
+                                                            {{ $product->id }}<br>
+                                                            @if ($product->is_active)
+                                                                <span class="text-success"><i
+                                                                        class="far fa-check-square"></i></span>
+                                                            @else
+                                                                <span class="text-danger"><i
+                                                                        class="far fa-times-circle"></i></span>
+                                                            @endif
+                                                            <br>
+                                                            <a href="{{ route('admin.products.edit', $product) }}">
                                                                 <i class="bi bi-pencil-square"></i>
                                                             </a>
 
                                                         </td>
                                                         <td>
-                                                            {{ $delivery->name }}<br>
-                                                            {{ $delivery->tel }}<br>
-                                                            {{ $delivery->address }}
+
                                                         </td>
                                                         <td>
-                                                            {{ $delivery->date->format('d.m.Y') }}<br>
-                                                            {{ Str::limit($delivery->time, 5, '') }}</td>
+                                                            {{ $product->title }}<br>
+                                                            {{ Str::limit($product->description, 100, ' ...') }}</td>
                                                         <td>
-                                                            @foreach (['american', 'chocolate', 'pumpkin', 'spanish', 'mini'] as $number)
-                                                                @php
-                                                                    $type = $number . '_number';
-                                                                @endphp
-                                                                @if ($delivery->$type != null)
-                                                                    {{ $number }}: {{ $delivery->$type }}<br>
-                                                                @endif
-                                                            @endforeach
+                                                            <div class="row">
+                                                                <div class="col">
+                                                                    {{ number_format($product->price, 2, ',', ' ') }}
+                                                                </div>
+                                                                <div class="col">
+                                                                    {{ number_format($product->old_price, 2, ',', ' ') }}
+                                                                </div>
+                                                            </div>
 
                                                         </td>
 
-                                                        <td>{{ $delivery->message }}</td>
                                                     </tr>
                                                 @empty
                                                     <p>Niema danych</p>
@@ -114,10 +91,9 @@
                                             <tfoot>
                                                 <tr>
                                                     <th rowspan="1" colspan="1">ID</th>
-                                                    <th rowspan="1" colspan="1">Name & Phone & Address</th>
-                                                    <th rowspan="1" colspan="1">Date & Time</th>
-                                                    <th rowspan="1" colspan="1">Delivery</th>
-                                                    <th rowspan="1" colspan="1">Message</th>
+                                                    <th rowspan="1" colspan="1">Picture</th>
+                                                    <th rowspan="1" colspan="1">Name</th>
+                                                    <th rowspan="1" colspan="1">Prices</th>
                                                 </tr>
                                             </tfoot>
                                         </table>

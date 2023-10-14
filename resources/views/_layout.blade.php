@@ -13,6 +13,7 @@
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.1.0/modern-normalize.min.css" />
     <link rel="stylesheet" href="/css/app.css">
+
 </head>
 
 <body>
@@ -39,6 +40,7 @@
         </div>
     </div>
     @include('inc.footer')
+    @stack('adminCSSscript')
 </body>
 
 </html>

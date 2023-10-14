@@ -13,8 +13,13 @@ class DeliveryAdminController extends Controller
      */
     public function index()
     {
-        $deliveries = Delivery::all();
-        return view('admin.deliveries.index', compact('deliveries'));
+        $statuses = [Delivery::NEW, Delivery::ACTIVE, Delivery::READY, Delivery::SENT, Delivery::DONE, Delivery::CANCELED];
+        $deliveries_query = Delivery::query();
+        $deliveries_query = isset($_GET['status']) && $_GET['status'] != NULL
+            ? $deliveries_query->where('status', $_GET['status'])
+            : $deliveries_query;
+        $deliveries = $deliveries_query->orderBy('date')->get();
+        return view('admin.deliveries.index', compact('deliveries', 'statuses'));
     }
 
     /**
@@ -46,7 +51,8 @@ class DeliveryAdminController extends Controller
      */
     public function edit(Delivery $delivery)
     {
-        //
+        $statuses = [Delivery::NEW, Delivery::ACTIVE, Delivery::READY, Delivery::SENT, Delivery::DONE, Delivery::CANCELED];
+        return view('admin.deliveries.edit', compact('delivery', 'statuses'));
     }
 
     /**
@@ -54,7 +60,10 @@ class DeliveryAdminController extends Controller
      */
     public function update(Request $request, Delivery $delivery)
     {
-        //
+        $delivery->fill($request->all());
+        $delivery->status = $request->status;
+        $delivery->save();
+        return back()->with('success', 'Informacja została zachowana');
     }
 
     /**
