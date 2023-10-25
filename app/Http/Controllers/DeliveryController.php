@@ -6,6 +6,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\DeliveryRequest;
 use App\Models\Delivery;
+use App\Models\DeliveryProduct;
+use App\Models\Product;
 
 class DeliveryController extends Controller
 {
@@ -16,7 +18,10 @@ class DeliveryController extends Controller
      */
     public function index()
     {
-        return view('delivery');
+        $products = Product::where('is_active', true)
+            ->select('id', 'title')
+            ->get();
+        return view('delivery', compact('products'));
     }
 
     /**
@@ -37,11 +42,23 @@ class DeliveryController extends Controller
      */
     public function store(DeliveryRequest $request)
     {
-        $item = new Delivery();
-        $item->fill($request->except(['_token', '_method']));
-        // dd($request->except(['_token', '_method']));
-        $item->save();
-        return redirect()->route('delivery.index')->with('success', 'Zamówienie zostało stworzone pomyślnie');
+        $products = array_filter($request->products);
+        if (count($products)) {
+            $item = new Delivery();
+            $item->fill($request->except(['_token', '_method']));
+            // dd($request->except(['_token', '_method']));
+
+            $item->save();
+            foreach ($products as $id => $count) {
+                $product = new DeliveryProduct();
+                $product->delivery_id = $item->id;
+                $product->product_id = $id;
+                $product->count = $count;
+                $product->save();
+            }
+            return redirect()->route('delivery.index')->with('success', 'Zamówienie zostało stworzone pomyślnie');
+        }
+        return back()->withInput()->with('error', 'Products are not chosen');
     }
 
     /**

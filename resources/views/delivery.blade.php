@@ -6,6 +6,7 @@
 
 @section('content')
     <h2>Samodzielny odbiór albo Zamówienie do biura/domu</h2>
+    @include('inc.messages')
     <form action="{{ route('delivery.store') }}" method="post">
         @csrf
         <div class="delivery-package">
@@ -96,32 +97,17 @@
                     <div class="delivery-goods">
                         <h3>Wybierz pąnczki:</h3>
                         <table class="delivery-table">
-                            <tr>
-                                <td><label for="american" class="cake-type-order">Amerykańskie</label></td>
-                                <td><input class="form-control" type="number" name="american_number" id="american"
-                                        min="0" max="50" step="1" value="{{ old('american_number') }}" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><label for="chocolate" class="cake-type-order">Czekoładowe</label></td>
-                                <td><input class="form-control" type="number" name="chocolate_number" id="chocolate"
-                                        min="0" max="50" step="1" /></td>
-                            </tr>
-                            <tr>
-                                <td><label for="pumpkin" class="cake-type-order">Dyniowe</label></td>
-                                <td><input class="form-control" type="number" name="pumpkin_number" id="pumpkin"
-                                        min="0" max="50" step="1" /></td>
-                            </tr>
-                            <tr>
-                                <td><label for="spanish" class="cake-type-order">Hiszpańskie</label></td>
-                                <td><input class="form-control" type="number" name="spanish_number" id="spanish"
-                                        min="0" max="50" step="1" /></td>
-                            </tr>
-                            <tr>
-                                <td><label for="mini" class="cake-type-order">Mini</label></td>
-                                <td><input class="form-control" type="number" name="mini_number" id="mini"
-                                        min="0" max="50" step="1" /></td>
-                            </tr>
+                            @foreach ($products as $product)
+                                <tr>
+                                    <td><label for="products[{{ $product->id }}]"
+                                            class="cake-type-order">{{ $product->title }}</label></td>
+                                    <td><input class="form-control" type="number" name="products[{{ $product->id }}]"
+                                            id="products[{{ $product->id }}]" min="0" max="50"
+                                            step="1" />
+                                    </td>
+                                </tr>
+                            @endforeach
+
                         </table>
                     </div>
                 </div>
@@ -149,6 +135,6 @@
                 <h3>Online paragon</h3>
             </div>
         </div>
+        <button type="submit" class="submit-button">Wyszlij</button>
     </form>
-    <button type="submit" class="submit-button">Wyszlij</button>
 @endsection

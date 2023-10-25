@@ -43,6 +43,14 @@ class Delivery extends Model
         'date' => 'date',
 
     ];
+    public function delivery_products()
+    {
+        return $this->hasMany(DeliveryProduct::class);
+    }
+
+
+
+
     public function status_title()
     {
         if ($this->status == self::NEW) {

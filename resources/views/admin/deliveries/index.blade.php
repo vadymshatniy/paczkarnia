@@ -92,17 +92,13 @@
                                                             {{ $delivery->date->format('d.m.Y') }}<br>
                                                             {{ Str::limit($delivery->time, 5, '') }}</td>
                                                         <td>
-                                                            @foreach (['american', 'chocolate', 'pumpkin', 'spanish', 'mini'] as $number)
-                                                                @php
-                                                                    $type = $number . '_number';
-                                                                @endphp
-                                                                @if ($delivery->$type != null)
-                                                                    {{ $number }}: {{ $delivery->$type }}<br>
-                                                                @endif
-                                                            @endforeach
-
+                                                            @if (isset($delivery->delivery_products) && $delivery->delivery_products != null)
+                                                                @foreach ($delivery->delivery_products as $delivery_product)
+                                                                    {{ $delivery_product->count }}:
+                                                                    {{ $delivery_product->product->title }}<br>
+                                                                @endforeach
+                                                            @endif
                                                         </td>
-
                                                         <td>{{ $delivery->message }}</td>
                                                     </tr>
                                                 @empty

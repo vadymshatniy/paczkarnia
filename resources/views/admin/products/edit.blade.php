@@ -8,7 +8,7 @@
                     <div class="card">
                         <form
                             action="{{ isset($product) ? route('admin.products.update', $product) : route('admin.products.store') }}"
-                            method="POST" class="was-validated">
+                            method="POST" class="was-validated" enctype="multipart/form-data">
                             @isset($product)
                                 @method('PATCH')
                             @endisset
@@ -24,8 +24,12 @@
                             </div>
 
                             <div class="card-body">
-                                @include('admin._include._messages')
 
+                                @include('admin._include._messages')
+                                <img
+                                    src="{{ isset($product) && $product->image != null ? asset('storage/' . $product->image) : null }}">
+                                <input type="file" name="image" id="image" class="form-control" accept="image/*"
+                                    required>
                                 <div class="row mb-3">
                                     <div class="col-md">
                                         <label for="title">Title</label>

@@ -14,7 +14,7 @@ class DeliveryAdminController extends Controller
     public function index()
     {
         $statuses = [Delivery::NEW, Delivery::ACTIVE, Delivery::READY, Delivery::SENT, Delivery::DONE, Delivery::CANCELED];
-        $deliveries_query = Delivery::query();
+        $deliveries_query = Delivery::with('delivery_products.product');
         $deliveries_query = isset($_GET['status']) && $_GET['status'] != NULL
             ? $deliveries_query->where('status', $_GET['status'])
             : $deliveries_query;
